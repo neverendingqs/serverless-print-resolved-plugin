@@ -1,0 +1,27 @@
+{
+  "name": "serverless-print-resolved-plugin",
+  "version": "0.0.1",
+  "description": "Print the resolved serverless.yml file",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "publish",
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neverendingqs/serverless-print-resolved-plugin.git"
+  },
+  "keywords": [
+    "serverless",
+    "framework"
+  ],
+  "author": "neverendingqs",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/neverendingqs/serverless-print-resolved-plugin/issues"
+  },
+  "homepage": "https://github.com/neverendingqs/serverless-print-resolved-plugin#readme",
+  "devDependencies": {
+    "publish": "^0.6.0"
+  }
+}
