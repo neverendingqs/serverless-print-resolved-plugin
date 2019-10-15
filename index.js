@@ -17,8 +17,14 @@ class PrintResolved {
   }
 
   writeResolved() {
-    const { depth } = _.get(this.serverless, 'custom.print-resolved', {});
-    const stringified = util.inspect(this.serverless, { depth: depth || 2 });
+    const { depth, path: objPath } = _.get(this.serverless, 'custom.print-resolved', {});
+
+    const toInspect = !!objPath
+      ? _.get(this.serverless, objPath || '')
+      : this.serverless;
+
+    const stringified = util.inspect(toInspect, { depth: depth || 2 });
+
     const filePath = path.join(
       this.serverless.serverless.config.servicePath,
       '.serverless',
