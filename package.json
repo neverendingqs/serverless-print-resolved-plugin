@@ -1,6 +1,6 @@
 {
   "name": "serverless-print-resolved-plugin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Print the resolved serverless.yml file",
   "main": "index.js",
   "scripts": {
@@ -23,5 +23,8 @@
   "homepage": "https://github.com/neverendingqs/serverless-print-resolved-plugin#readme",
   "devDependencies": {
     "publish": "^0.6.0"
+  },
+  "dependencies": {
+    "lodash.get": "^4.4.2"
   }
 }
