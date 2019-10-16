@@ -1,5 +1,8 @@
 # serverless-print-resolved-plugin
 
+[![CircleCI](https://circleci.com/gh/neverendingqs/serverless-print-resolved-plugin.svg?style=svg)](https://circleci.com/gh/neverendingqs/serverless-print-resolved-plugin)
+[![npm version](https://badge.fury.io/js/serverless-print-resolved-plugin.svg)](https://badge.fury.io/js/serverless-print-resolved-plugin)
+
 ## Usage
 
 Install the plugin:
