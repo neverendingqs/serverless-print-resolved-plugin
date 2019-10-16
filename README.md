@@ -21,7 +21,7 @@ plugins:
 After `package`, `.serverless/serverless-resolved.yml` will contain a copy of
 `serverless.yml` but with all varaibles resolved.
 
-To include more metadata in the `serverless` object, add the following to
+To include more metadata from the `serverless` object, add the following to
 `serverless.yml`:
 
 ```yaml
