@@ -5,7 +5,8 @@ const _ = {
 };
 const fs = require('fs');
 const path = require('path');
-const util = require('util');
+
+const yaml = require('js-yaml');
 
 class PrintResolved {
   constructor(serverless) {
@@ -16,19 +17,36 @@ class PrintResolved {
     };
   }
 
+  getOriginal() {
+    const filePath = path.join(
+      this.serverless.serverless.config.servicePath,
+      'serverless.yml'
+    );
+
+    const stringified = fs.readFileSync(filePath, 'utf-8');
+    return yaml.safeLoad(stringified);
+  }
+
   writeResolved() {
-    const { depth, path: objPath } = _.get(this.serverless, 'custom.print-resolved', {});
+    const keysToInclude = new Set(
+      Object.keys(
+        this.getOriginal()
+      )
+    );
 
-    const toInspect = !!objPath
-      ? _.get(this.serverless, objPath || '')
-      : this.serverless;
+    const filtered = Object.entries(this.serverless)
+      .filter(([key])=> keysToInclude.has(key))
+      .reduce(
+        (acc, [key, value]) => Object.assign(acc, { [key]: value }),
+        {}
+      );
 
-    const stringified = util.inspect(toInspect, { depth: depth || 2 });
+    const stringified = yaml.safeDump(filtered);
 
     const filePath = path.join(
       this.serverless.serverless.config.servicePath,
       '.serverless',
-      'resolved-serverless.txt'
+      'serverless-resolved.yml'
     );
     fs.writeFileSync(filePath, stringified, 'utf-8');
   }
