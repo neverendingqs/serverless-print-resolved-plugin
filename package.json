@@ -1,6 +1,6 @@
 {
   "name": "serverless-print-resolved-plugin",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Print the resolved serverless.yml file",
   "main": "index.js",
   "scripts": {
@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "js-yaml": "^3.13.1",
-    "lodash.get": "^4.4.2"
+    "lodash.get": "^4.4.2",
+    "lodash.set": "^4.3.2"
   }
 }
