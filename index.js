@@ -1,7 +1,8 @@
 'use strict';
 
 const _ = {
-  get: require('lodash.get')
+  get: require('lodash.get'),
+  set: require('lodash.set')
 };
 const fs = require('fs');
 const path = require('path');
@@ -28,20 +29,31 @@ class PrintResolved {
   }
 
   writeResolved() {
+    const { paths } = _.get(this.serverless, 'custom.print-resolved', {});
+
     const keysToInclude = new Set(
       Object.keys(
         this.getOriginal()
       )
     );
 
-    const filtered = Object.entries(this.serverless)
+    const base = Object.entries(this.serverless)
       .filter(([key])=> keysToInclude.has(key))
       .reduce(
         (acc, [key, value]) => Object.assign(acc, { [key]: value }),
         {}
       );
 
-    const stringified = yaml.safeDump(filtered);
+    const merged = paths.reduce(
+      (acc, path) => {
+        const value = _.get(this.serverless, path);
+        _.set(acc, path, value);
+        return acc;
+      },
+      base
+    );
+
+    const stringified = yaml.safeDump(merged, { skipInvalid: true });
 
     const filePath = path.join(
       this.serverless.serverless.config.servicePath,
