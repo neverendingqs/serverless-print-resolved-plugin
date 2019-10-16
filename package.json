@@ -1,6 +1,6 @@
 {
   "name": "serverless-print-resolved-plugin",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Print the resolved serverless.yml file",
   "main": "index.js",
   "scripts": {

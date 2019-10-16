@@ -1,7 +1,11 @@
-# serverless-print-resolved-plugin
-
 [![CircleCI](https://circleci.com/gh/neverendingqs/serverless-print-resolved-plugin.svg?style=svg)](https://circleci.com/gh/neverendingqs/serverless-print-resolved-plugin)
 [![npm version](https://badge.fury.io/js/serverless-print-resolved-plugin.svg)](https://badge.fury.io/js/serverless-print-resolved-plugin)
+
+# serverless-print-resolved-plugin
+
+This plugin generates a copy of `serverless.yml` with all Serverless variables
+resolved to actual values. It can also write additional metadata that is
+available.
 
 ## Usage
 
@@ -18,8 +22,8 @@ plugins:
   - serverless-print-resolved-plugin
 ```
 
-After `package`, `.serverless/serverless-resolved.yml` will contain a copy of
-`serverless.yml` but with all varaibles resolved.
+After `package` / `deploy`, `.serverless/serverless-resolved.yml` will contain a
+copy of `serverless.yml` but with all variables resolved.
 
 To include more metadata from the `serverless` object, add the following to
 `serverless.yml`:
